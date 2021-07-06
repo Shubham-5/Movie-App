@@ -4,15 +4,14 @@ const SearchForm = ({ setSearchInput, searchInput, onSubmitHandler }) => {
   return (
     <>
       <div className='col col-sm-4'>
-        <form onSubmit={onSubmitHandler}>
-          <input
+        <input
             className='form-control'
             type='text'
             placeholder='Search a movie..'
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
-        </form>
+        
       </div>
     </>
   );
