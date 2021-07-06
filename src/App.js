@@ -21,7 +21,7 @@ function App() {
     const responseJson = await response.json();
 If(searchInput.Search){
     setMovies(responseJson.Search);
-}
+};
     setSearchInput("");
   };
 
