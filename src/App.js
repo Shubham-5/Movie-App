@@ -12,23 +12,20 @@ function App() {
   const [fav, setFav] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  useEffect(() => {}, []);
+  useEffect(() => {getMovies(searchInput);}, [searchInput]);
 
-  const getMovies = async () => {
+  const getMovies = async (searchInput) => {
     const response = await fetch(
       `http://www.omdbapi.com/?s=${searchInput}&apikey=33136a8d`
     );
     const responseJson = await response.json();
-
+If(searchInput.Search){
     setMovies(responseJson.Search);
-
+}
     setSearchInput("");
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    getMovies();
-  };
+  
 
   const favHandler = (movie) => {
     const newFav = setFav([...fav, movie]);
@@ -51,7 +48,7 @@ function App() {
         <SearchForm
           setSearchInput={setSearchInput}
           searchInput={searchInput}
-          onSubmitHandler={onSubmitHandler}
+          
         />
       </div>
       <div className='row '>
