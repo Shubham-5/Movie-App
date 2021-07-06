@@ -20,10 +20,10 @@ function App() {
     );
     const responseJson = await response.json();
 
-if(searchInput.Search){
+if(responseJson.Search){
     setMovies(responseJson.Search);
 };
-    setSearchInput("");
+    
   };
 
   
