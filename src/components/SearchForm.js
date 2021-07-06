@@ -8,7 +8,7 @@ const SearchForm = ({ setSearchInput, searchInput, onSubmitHandler }) => {
           <input
             className='form-control'
             type='text'
-            placeholder='Search ..'
+            placeholder='Search a movie..'
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
           />
