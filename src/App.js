@@ -19,6 +19,7 @@ function App() {
       `http://www.omdbapi.com/?s=${searchInput}&apikey=33136a8d`
     );
     const responseJson = await response.json();
+
 If(searchInput.Search){
     setMovies(responseJson.Search);
 };
