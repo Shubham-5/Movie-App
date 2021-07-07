@@ -1,18 +1,16 @@
 import React from "react";
 
-const SearchForm = ({ setSearchInput, searchInput, onSubmitHandler }) => {
+const SearchForm = ({ setSearchInput, searchInput }) => {
   return (
     <>
       <div className='col col-sm-4'>
-        <form onSubmit={onSubmitHandler}>
-          <input
-            className='form-control'
-            type='text'
-            placeholder='Search ..'
-            value={searchInput}
-            onChange={(e) => setSearchInput(e.target.value)}
-          />
-        </form>
+        <input
+          className='form-control'
+          type='text'
+          placeholder='Search a movie...'
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
       </div>
     </>
   );

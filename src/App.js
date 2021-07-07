@@ -12,26 +12,30 @@ function App() {
   const [fav, setFav] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    getMovies(searchInput);
+  }, [searchInput]);
 
-  const getMovies = async () => {
+  useEffect(() => {
+    const movieFavSaved = JSON.parse(
+      localStorage.getItem("react-movie-app-favourites")
+    );
+    setFav(movieFavSaved);
+  }, []);
+
+  const getMovies = async (searchInput) => {
     const response = await fetch(
-      `http://www.omdbapi.com/?s=${searchInput}&apikey=33136a8d`
+      `https://www.omdbapi.com/?s=${searchInput}&apikey=33136a8d`
     );
     const responseJson = await response.json();
-
-    setMovies(responseJson.Search);
-
-    setSearchInput("");
-  };
-
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
-    getMovies();
+    if (responseJson.Search) {
+      setMovies(responseJson.Search);
+    }
   };
 
   const favHandler = (movie) => {
-    const newFav = setFav([...fav, movie]);
+    const newFav = [...fav, movie];
+    setFav(newFav);
     saveToLocalStorage(newFav);
   };
   const saveToLocalStorage = (items) => {
@@ -48,11 +52,7 @@ function App() {
     <div className='container movie-app  '>
       <div className=' d-flex align-items-center Smt-4 mb-4'>
         <Heading heading='Movie' />
-        <SearchForm
-          setSearchInput={setSearchInput}
-          searchInput={searchInput}
-          onSubmitHandler={onSubmitHandler}
-        />
+        <SearchForm setSearchInput={setSearchInput} searchInput={searchInput} />
       </div>
       <div className='row '>
         <MoviesList
