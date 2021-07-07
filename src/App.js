@@ -12,6 +12,7 @@ function App() {
   const [fav, setFav] = useState([]);
   const [searchInput, setSearchInput] = useState("");
 
+<<<<<<< HEAD
   useEffect(() => {
     getMovies(searchInput);
   }, [searchInput]);
@@ -23,15 +24,30 @@ function App() {
     setFav(movieFavSaved);
   }, []);
 
+=======
+  useEffect(() => {getMovies(searchInput);}, [searchInput]);
+
+>>>>>>> 9e271e23c9d33ff976607037194996759485368b
   const getMovies = async (searchInput) => {
     const response = await fetch(
       `https://www.omdbapi.com/?s=${searchInput}&apikey=33136a8d`
     );
     const responseJson = await response.json();
+<<<<<<< HEAD
     if (responseJson.Search) {
       setMovies(responseJson.Search);
     }
   };
+=======
+
+if(responseJson.Search){
+    setMovies(responseJson.Search);
+};
+    
+  };
+
+  
+>>>>>>> 9e271e23c9d33ff976607037194996759485368b
 
   const favHandler = (movie) => {
     const newFav = [...fav, movie];
@@ -52,7 +68,15 @@ function App() {
     <div className='container movie-app  '>
       <div className=' d-flex align-items-center Smt-4 mb-4'>
         <Heading heading='Movie' />
+<<<<<<< HEAD
         <SearchForm setSearchInput={setSearchInput} searchInput={searchInput} />
+=======
+        <SearchForm
+          setSearchInput={setSearchInput}
+          searchInput={searchInput}
+          
+        />
+>>>>>>> 9e271e23c9d33ff976607037194996759485368b
       </div>
       <div className='row '>
         <MoviesList
