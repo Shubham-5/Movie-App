@@ -16,12 +16,12 @@ function App() {
     getMovies(searchInput);
   }, [searchInput]);
 
-  useEffect(() => {
-    const movieFavSaved = JSON.parse(
-      localStorage.getItem("react-movie-app-favourites")
-    );
-    setFav(movieFavSaved);
-  }, []);
+  // useEffect(() => {
+  //   const movieFavSaved = JSON.parse(
+  //     localStorage.getItem("react-movie-app-favourites")
+  //   );
+  //   setFav(movieFavSaved);
+  // }, []);
 
   const getMovies = async (searchInput) => {
     const response = await fetch(
@@ -36,16 +36,16 @@ function App() {
   const favHandler = (movie) => {
     const newFav = [...fav, movie];
     setFav(newFav);
-    saveToLocalStorage(newFav);
+    // saveToLocalStorage(newFav);
   };
-  const saveToLocalStorage = (items) => {
-    localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
-  };
+  // const saveToLocalStorage = (items) => {
+  //   localStorage.setItem("react-movie-app-favourites", JSON.stringify(items));
+  // };
   const removeFavouriteMovie = (movie) => {
     const newFav = fav.filter((favl) => favl.imdbID !== movie.imdbID);
 
     setFav(newFav);
-    saveToLocalStorage(newFav);
+    // saveToLocalStorage(newFav);
   };
 
   return (
