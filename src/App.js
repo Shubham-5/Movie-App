@@ -52,6 +52,7 @@ function App() {
     <div className='container movie-app  '>
       <div className=' d-flex align-items-center Smt-4 mb-4'>
         <Heading heading='Movie' />
+
         <SearchForm setSearchInput={setSearchInput} searchInput={searchInput} />
       </div>
       <div className='row '>
